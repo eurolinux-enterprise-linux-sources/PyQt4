@@ -4,7 +4,7 @@
 Summary: Python bindings for Qt4
 Name: PyQt4
 Version: 4.6.2
-Release: 8%{?dist}
+Release: 9%{?dist}
 
 # GPLv2 exceptions(see GPL_EXCEPTIONS*.txt)
 License: GPLv3 or GPLv2 with exceptions
@@ -30,6 +30,11 @@ Patch5:	PyQt-x11-gpl-4.6.2-timestamp-multilib.patch
 
 # disable webkit
 Patch6: PyQt-x11-gpl-4.6.2-webkit.patch
+
+# add missing qmenubar-cornerWidget
+Patch7: PyQt-x11-gpl-4.6.2-qmenubar-cornerWidget-bz#821061.patch
+# add missing qnetwork-deleteResource
+Patch8: PyQt-x11-gpl-4.6.2-qnetwork-deleteResource-bz#757411.patch
 
 BuildRequires: chrpath
 BuildRequires: dbus-devel dbus-python-devel
@@ -74,6 +79,8 @@ of the Qt4 classes (e.g. KDE or your own).
 %patch4 -p1 
 %patch5 -p1 -b .timestamp
 %patch6 -p1 -b .webkit
+%patch7 -p1 -b .qmenubar-cornerWidget
+%patch8 -p1 -b .qnetwork-deleteResource
 
 ## permissions
 # mark examples non-executable
@@ -155,6 +162,10 @@ rm -rf %{buildroot}
 %endif
 
 %changelog
+* Fri Aug 24 2012 Than Ngo <than@redhat.com> - 4.6.2-9
+- Resolves: bz#757411, add missing qnetwork-deleteResource
+- Resolves: bz#821061, add missing qmenubar-cornerWidget
+
 * Tue Jun 01 2010 Than Ngo <than@redhat.com> - 4.6.2-8
 - Resolves: bz#597271, drop WebKit support in Qt
 

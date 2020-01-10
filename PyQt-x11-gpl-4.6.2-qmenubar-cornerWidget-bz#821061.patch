@@ -1,0 +1,13 @@
+diff -up PyQt-x11-gpl-4.6.2/sip/QtGui/qmenubar.sip.me PyQt-x11-gpl-4.6.2/sip/QtGui/qmenubar.sip
+--- PyQt-x11-gpl-4.6.2/sip/QtGui/qmenubar.sip.me	2012-05-14 18:10:57.218778793 +0200
++++ PyQt-x11-gpl-4.6.2/sip/QtGui/qmenubar.sip	2012-05-14 18:13:41.715789633 +0200
+@@ -61,6 +61,8 @@ public:
+     virtual int heightForWidth(int) const;
+     QRect actionGeometry(QAction *) const;
+     QAction *actionAt(const QPoint &) const;
++    void setCornerWidget(QWidget *widget /Transfer/, Qt::Corner corner = Qt::TopRightCorner);
++    QWidget *cornerWidget(Qt::Corner corner = Qt::TopRightCorner) const;
+ %If (Qt_4_3_0 -)
+     virtual void setVisible(bool visible);
+ %End
+diff -up PyQt-x11-gpl-4.6.2/sip/QtGui/qtabwidget.sip.me PyQt-x11-gpl-4.6.2/sip/QtGui/qtabwidget.sip
